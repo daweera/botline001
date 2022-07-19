@@ -28,7 +28,7 @@ def addTokenFrom_DB():
     cur.execute("SELECT * FROM groupline")
     records = cur.fetchall()
     for row in records:
-        token.append(row[4])
+        token.append(row[3])
     return token 
 
 
@@ -55,7 +55,7 @@ def linenotify(message, file_name=None):
         print(session_post.text)
     return
 
-def BotLine():
+def BotLine1():
         
     folder_id  = '1sxH14tKANroiMNqLCjkPJX1hoWIg5Gdc'
     query = f"parents = '{folder_id}'"
@@ -157,22 +157,11 @@ def BotLine():
                     line_msg += ('\n'+para.text)
                 linenotify(message=line_msg)
             line_msg=""
+            if os.path.exists(path_file):
+                 os.remove(path_file)
+
+BotLine1()
 
 
-        
 
-
-        if os.path.exists(path_file):
-            os.remove(path_file)
-          
-
-
-if __name__ == '__main__':
-    # schedule.every().day.at("08:32").do(BotLine)
-    BotLine()
-    # while True:
-    #     NowTime = datetime.datetime.now()
-    #     print('While Loop', NowTime)
-    #     schedule.run_pending()
-    #     time.sleep(10)
     
